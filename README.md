@@ -31,10 +31,9 @@ dotnet new classlib -o Infrastructure
 
 El siguiente paso va a ser agregar cada uno de nuestros proyectos a la solucion:
 ```
-- dotnet sln add nombre_proyecto
-    - dotnet sln add .\API\
-    - dotnet sln add .\Core\
-    - dotnet sln add .\Infrastructure\
+dotnet sln add .\API\
+dotnet sln add .\Core\
+dotnet sln add .\Infrastructure\
 ```
 
 Para ver los proyectos que se encutran asociados a la solucion podemos ejecutar el siguiente comando: 
