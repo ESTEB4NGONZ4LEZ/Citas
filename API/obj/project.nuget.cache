@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "RWuQvBDphI4mRaDKh0tuOTZrYsGPCSXaEfrZnvsAE6wkA1P8T8w4/XxvlQNOm64OZh6NoJCTqwdOY/FYvwBgYA==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Esteban\\Documents\\NetCore\\Citas\\API\\API.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "No se puede cargar el índice de servicio para el origen https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.AspNetCore.OpenApi"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "No se puede cargar el índice de servicio para el origen https://api.nuget.org/v3/index.json.",
+      "libraryId": "Swashbuckle.AspNetCore"
+    }
+  ]
+}
