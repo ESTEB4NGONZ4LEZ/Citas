@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "q67ElI1PDleDbSLDQRWAs6R8Fliczz27d/REQdJo56Fnhhf0pUca5H24VkegBYETmWErgFIiidIYDBVa4WlMng==",
+  "dgSpecHash": "6EluJmWPttjmcY/RUjxFecMSX/kIHWjiryL67vxrlN8ceR/lftLbYhDFMWlMyV3i/zfc/1zvEa4N8hCOLbgkwQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Esteban\\Documents\\NetCore\\Citas\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,8 @@
     "C:\\Users\\Esteban\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Esteban\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\Esteban\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Esteban\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
+    "C:\\Users\\Esteban\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\Esteban\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Esteban\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Esteban\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
