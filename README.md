@@ -23,7 +23,7 @@ Vamos a crear nuestro archivo webapi ejecutando el siguiente comando:
 dotnet new webapi -o API
 ```
 
-Siguiendo nuestra estructura crearemos los proyectos de Libreria que son Core e Infrastructure:
+Siguiendo nuestra estructura crearemos los proyectos de Libreria que son **Core** e **Infrastructure**:
 ```
 dotnet new classlib -o Core
 dotnet new classlib -o Infrastructure
@@ -57,14 +57,30 @@ dotnet add reference ..\Infrastructure\
 
 ---
 
-El siguiente paso sera agregar los paquetes necesarios, para esto podemos usar NuGet Gallery que es una extension de VSC o instalarlos directamentes desde la terminal.
+El siguiente paso sera agregar los paquetes necesarios, para esto podemos usar **NuGet Gallery** que es una extension de VSC o instalarlos directamentes desde la terminal.
 
-[NuGet Gallery] : https://www.nuget.org/
-Iremos a [NuGet Gallery][NuGet Gallery] y buscaremos los siguientes paquetes: 
+
+Iremos a [NuGet Gallery](https://www.nuget.org/) y buscaremos los siguientes paquetes: 
 - Microsoft.EntityFrameworkCore ( Lo instalaremos en API e Infrastructure ).
 - Microsoft.EntityFrameworkCore.Design ( Lo instalaremos en API ).
 - Pomelo.EntityFrameworkCore.MySql ( Lo instalaremos en Infrastructure ).
 
-Buscaremos las versiones LTS de cada unos de los paquetes, copiamos el comnado y lo ejecutaremos en el proyecto respectivo.
+Buscaremos las versiones LTS de cada unos de los paquetes, copiamos el comando y lo ejecutaremos en el proyecto respectivo.
 
 ---
+
+Lo siguiente que haremos va a ser crear nuestra clase de contexto la cual se usara para la conexion a la base de datos, en **Infrastructure** crearemos una carpeta llamada **Data** y ahi crearemos nuestra clase de contexto, dicha clase debe ser creada con el nombre del proyecto seguido de **context** en CamelCase. 
+
+La clase de contexto heredara de DbContext que perteneque a Entity Framerwork e importamos nuestros paquetes:
+```
+public class NombreContext : DbContext
+```
+
+A continuacion crearemos el contructor de la clase para eso ponemos el cursor en medio de los corchetes de la clase, damos click derecho y nos dirijimos a la opcion **Refactor** seleccionarmos la opcion **Generar el constructor 'NombreContext(options)'** y le agragamos entre llaves diamantes el nombre de la clase de contexto y deberiamos tener algo asi: 
+```
+public NombreContext(DbContextOptions<NombreContext> options) : base(options)
+{
+}
+```
+
+
