@@ -94,4 +94,16 @@ Ahora crearemos nuestra Connection String para poder establecer conexion con la 
 
 ---
 
+Configuraremos el contenedor de inyeccion de dependencias, para esto iremos a la carpeta API, Program.cs y pergaremos este codigo y cambiamos el nombre de la clase de contexto ( 5 ):
+```
+builder.Services.AddDbContext<NombreContext>(optionsBuilder =>
+{
+string ? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
+```
+
+---
+
+
 
