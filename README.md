@@ -41,7 +41,7 @@ Para ver los proyectos que se encutran asociados a la solucion podemos ejecutar 
 dotnet sln list
 ```
 
-Ahora estableceremos referencia entre los proyectos
+Ahora estableceremos referencia entre los proyectos:
 - Infrastrcuture -> Core
 - API -> Infrastructure
 
@@ -55,5 +55,16 @@ dotnet add reference ..\Core\
 dotnet add reference ..\Infrastructure\
 ```
 
+---
 
+El siguiente paso sera agregar los paquetes necesarios, para esto podemos usar NuGet Gallery que es una extension de VSC o instalarlos directamentes desde la terminal.
 
+[NuGet Gallery] : https://www.nuget.org/
+Iremos a [NuGet Gallery][NuGet Gallery] y buscaremos los siguientes paquetes: 
+- Microsoft.EntityFrameworkCore ( Lo instalaremos en API e Infrastructure ).
+- Microsoft.EntityFrameworkCore.Design ( Lo instalaremos en API ).
+- Pomelo.EntityFrameworkCore.MySql ( Lo instalaremos en Infrastructure ).
+
+Buscaremos las versiones LTS de cada unos de los paquetes, copiamos el comnado y lo ejecutaremos en el proyecto respectivo.
+
+---
