@@ -1,7 +1,9 @@
 ## Uso de Migraciones
 
 - Crearemos una carpeta en donde almacenaremos nuestro proyecto.
-`mkdir nombre_proyecto`
+```
+mkdir nombre_proyecto
+```
 
 - Llevaremos la suiguiente estructura:
 
