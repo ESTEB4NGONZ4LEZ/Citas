@@ -76,11 +76,22 @@ La clase de contexto heredara de DbContext que perteneque a Entity Framerwork e 
 public class NombreContext : DbContext
 ```
 
-A continuacion crearemos el contructor de la clase para eso ponemos el cursor en medio de los corchetes de la clase, damos click derecho y nos dirijimos a la opcion **Refactor** seleccionarmos la opcion **Generar el constructor 'NombreContext(options)'** y le agragamos entre llaves diamantes el nombre de la clase de contexto y deberiamos tener algo asi: 
+A continuacion crearemos el contructor de la clase para eso ponemos el cursor en medio de los corchetes de la clase, damos click derecho y nos dirijimos a la opcion **Refactor** seleccionarmos la opcion **Generar el constructor 'NombreContext(options)'** y le agregamos entre llaves diamantes el nombre de la clase de contexto y deberiamos tener algo asi: 
 ```
 public NombreContext(DbContextOptions<NombreContext> options) : base(options)
 {
 }
 ```
+
+--- 
+
+Ahora crearemos nuestra Connection String para poder establecer conexion con la base de datos, nos dirigimos a API y buscaremos **appsettings.Development.json** y pegaremos el siguiente codigo:
+```
+"ConnectionStrings": {
+"DefaultConnection" : "host=localhost;user=root;password='';database=nombrebd"
+}
+```
+
+---
 
 
