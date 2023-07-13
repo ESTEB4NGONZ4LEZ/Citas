@@ -83,6 +83,15 @@ public NombreContext(DbContextOptions<NombreContext> options) : base(options)
 }
 ```
 
+Luego haremos el metodo para la carga de forma automatica las configuraciones:
+```
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    base.OnModelCreating(modelBuilder);
+    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+}
+```
+
 --- 
 
 Ahora crearemos nuestra Connection String para poder establecer conexion con la base de datos, nos dirigimos a API y buscaremos **appsettings.Development.json** y pegaremos el siguiente codigo:
@@ -94,7 +103,7 @@ Ahora crearemos nuestra Connection String para poder establecer conexion con la 
 
 ---
 
-Configuraremos el contenedor de inyeccion de dependencias, para esto iremos a la carpeta API, Program.cs y pergaremos este codigo y cambiamos el nombre de la clase de contexto ( 5 ):
+Configuraremos el contenedor de inyeccion de dependencias, para esto iremos a la carpeta **API**, **Program.cs** y pergaremos este codigo y cambiamos el nombre de la clase de contexto ( 5 ):
 ```
 builder.Services.AddDbContext<NombreContext>(optionsBuilder =>
 {
@@ -104,6 +113,40 @@ optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionStr
 ```
 
 ---
+
+El siguiente paso sera crear nuestras Entidades, para eso iremos a **Core** y crearemos una carpeta **Entities** en donde almacenaremos todas nuestras entidades, luego vamos a nuestro archivo de contexto y creamos el DbSet para cada una de nuestras entidades: 
+```
+public DbSet<NombreClase> ? NombreClases { get; set; }
+```
+
+Ahora en **Infrastructure**, **Data**, crearemos una carpeta llamada **Configuration** en donde crearemos las configuraciones de las tablas usando FluentApi. Crearemos las clases con el **nombre de la entidad** seguido de la palabra **Configuration**. La clase heredara de **IEntityTypeConfiguration<NombreEntidad>** y usamos el QuickFix para hacer las importaciones e implementar la interfaz y creamos nuestra configuracion.
+
+--- 
+
+El siguiente paso va a se descargar la herramienta de migraciones, para eso ejecutamos el siguiente comando: 
+```
+dotnet tool install --global dotnet-ef
+```
+
+Para verificar que se ha instalado correctamente podemos ejecutar: 
+```
+dotnet tool list –g
+```
+
+Despues de hacer la instalacion podemos ejecutar el siguiente comando para hacer la migracion: 
+```
+dotnet ef migrations add InitialCreate --project ./Infrastructure/ --startup-project ./API/ --output-dir ./Data/Migrations
+```
+
+Luego ejecutamos `dotnet build` para verificar los errores y warnings.
+
+Para crear la base de datos con nustra configuracion ejecutaremos el siguiente comando: 
+```
+dotnet ef database update --project ./Infrastructure/ --startup-project ./API/
+```
+
+
+
 
 
 
