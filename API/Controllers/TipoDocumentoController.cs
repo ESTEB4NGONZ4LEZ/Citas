@@ -9,7 +9,6 @@ namespace API.Controllers;
 public class TipoDocumentoController : BaseApiController
 {
     private readonly CitasContext _context;
-   
     public TipoDocumentoController(CitasContext context){
         _context = context;
     }
@@ -20,5 +19,13 @@ public class TipoDocumentoController : BaseApiController
     public async Task<ActionResult<IEnumerable<TipoDocumento>>> Get(){
         var tipoDocumentos = await _context.TipoDocumentos.ToListAsync();
         return Ok(tipoDocumentos);
+    }
+
+    [HttpGet("id")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Get(int id){
+        var tipoDocumento = await _context.TipoDocumentos.FindAsync(id);
+        return Ok(tipoDocumento);
     }
 }
