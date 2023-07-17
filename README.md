@@ -163,6 +163,60 @@ Nos dirigimos a **API\Properties** y en el archivo **launchSettings.json** modif
 - Unificamos los puertos para todos los servidores, profile al 5000, en https primero 5001 y segundo 5000.
 
 Con la URL podemos acceder al swagger, swagger es una pagina en donde podremos ver la documentacion de toda nuestra API.
+
+# Creacion de Controladores
+
+Para crear un controlador el primer paso es crear un ApiController, el nombre del archivo sera **nombre_clase + Controller**, esta clase heredara de la BaseApiController que ha sido creada previamente.
+
+Crearemos los Snippets para el contructor de nuestros controladores, para buscar por id y en general.
+
+```
+"Constructor with DbContext" : {
+    "prefix": "ctorctx",
+    "body": [
+        "private readonly DbContext _context;",
+        "",
+        "public TipoDocumentoController(DbContext context){",
+        "    _context = context;", 
+        "}"
+    ],
+    "description": "Constructor with DbContext"
+}
+```
+
+```
+"HttpGet Action with ProducesResponseType" : {
+    "prefix": "getaction",
+    "body": [
+        "[HttpGet]",
+        "[ProducesResponseType(StatusCodes.Status200OK)]",
+        "[ProducesResponseType(StatusCodes.Status400BadRequest)]",
+        "public async Task<ActionResult<IEnumerable<${1:nameDbSet}>>> Get(){",
+        "    var ${2:nameVar} = await _context.$1.ToListAsync();",
+        "    return Ok($2);",
+        "}"
+    ],
+    "description": "HttpGet Action with ProducesResponseType"
+}
+```
+
+```
+"HttpGet Action with Route and ProducesResponseType" : {
+    "prefix": "getactionId",
+    "body": [
+        "[HttpGet(\"{id}\")]",
+        "[ProducesResponseType(StatusCodes.Status200OK)]",
+        "[ProducesResponseType(StatusCodes.Status400BadRequest)]",
+        "public async Task<ActionResult> Get(int id){",
+        "    var ${2:nameVar} = await _context.${3:nameDbSet}.FindAsync(id);",
+        "    return Ok($2);",
+        "}"
+    ],
+    "description": "HttpGet action with Route and ProducesResponseType"
+}
+```
+
+Para comprobar que todo ha salido bien nos dirigimos a **API**, ejecutamos **dotnet run** y por ultimos nos dirigimos al localhost con el puerto que hemos configurado /swagger y hacemos las debidas pruebas.
 ---
 
 ## CORS
