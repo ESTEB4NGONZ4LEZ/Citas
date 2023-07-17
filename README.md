@@ -1,4 +1,4 @@
-## Uso de Migraciones
+## MIGRACIONES
 
 Crearemos una carpeta en donde almacenaremos nuestro proyecto
 ```
@@ -144,6 +144,57 @@ Para crear la base de datos con nustra configuracion ejecutaremos el siguiente c
 ```
 dotnet ef database update --project ./Infrastructure/ --startup-project ./API/
 ```
+
+---
+
+## CONTROLADORES 
+
+El primer sera crear una clase llamada **BaseApiController** dentro de **API\Controllers**, esta clase heredara de **ControllerBase**  y pegamos el siguiente codigo arriba de la clase: 
+
+```
+[ApiController]
+[Route("/api[controller]")]
+```
+
+Esto nos va a servir para identificar el enrutamiento hacia nuestros endpoints.
+
+Nos dirigimos a **API\Properties** y en el archivo **launchSettings.json** modificaremos lo siguiente:
+- launchBrouwser : false.
+- Unificamos los puertos para todos los servidores, profile al 5000, en https primero 5001 y segundo 5000.
+
+Con la URL podemos acceder al swagger, swagger es una pagina en donde podremos ver la documentacion de toda nuestra API.
+---
+
+## CORS
+
+CORS es una política de seguridad implementada en los navegadores web que restringe las solicitudes HTTP que se pueden realizar desde un dominio hacia otro, los metodos de Cors se definen como estaticos en una clase estatica.
+
+El primer paso sera crear una carpeta llamada **Extensions** dentro de **API** y dentro de ella crearemos una carpeta llacama **ApplicationServiceExtension**.
+
+```
+public static void ConfigureCors(this IServiceCollection services) => 
+    services.AddCors(options => {
+        options.AddPolicy("CorsPolicy", builder => 
+            builder.AllowAnyOrigin()     // withOrigins("https://dominio.com") (definimos un dominio para recibir peticiones)
+                   .AllowAnyMethod()     // withMethods("GET", "POST") (definimos los metodos que podemos recibir)
+                   .AllowAnyHeader());   // withHeaders("accept", "content-type") ( definimos los headers )
+    });
+```
+
+Es importante recordar que las **CORS** se definen como estaticas por esa razon tanto la clase como los metodos deben ser estaticos.
+
+Luego nos vamos a nuestro **Program.cs** y agregamos nuestro servicio de Cors:
+
+```
+builder.Services.ConfigureCors();
+```
+
+Y despues de agregar nuestro servicio debemos usarlo, nos vamos al final del todo y ponemos el siguiente codigo:
+
+```
+app.UserCors("nombreCors");
+```
+---
 
 
 
