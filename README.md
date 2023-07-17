@@ -217,6 +217,7 @@ Crearemos los Snippets para el contructor de nuestros controladores, para buscar
 ```
 
 Para comprobar que todo ha salido bien nos dirigimos a **API**, ejecutamos **dotnet run** y por ultimos nos dirigimos al localhost con el puerto que hemos configurado /swagger y hacemos las debidas pruebas.
+
 ---
 
 ## CORS
